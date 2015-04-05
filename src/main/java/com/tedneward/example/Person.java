@@ -23,13 +23,39 @@ public class Person {
   public int getAge() {
     return age;
   }
+
+  public void setAge(int value) {
+    int old = age;
+    age = value;
+
+    this.pcs.firePropertyChange("age", old, value);
+    propertyChangeFired = true;
+  }
   
   public String getName() {
     return name;
   }
+
+  public void setName(String value) throws IllegalArgumentException {
+    if (null == value) {
+      throw new IllegalArgumentException("The name must be non-null.");
+    }
+    String old = name;
+    name = value;
+
+    this.pcs.firePropertyChange("name", old, value);
+    propertyChangeFired = true;
+  }
   
   public double getSalary() {
     return salary;
+  }
+
+  public void setSalary(double value) {
+    double old = salary;
+    salary = value;
+
+    this.pcs.firePropertyChange("salary", old, value);
   }
   
   public String getSSN() {
