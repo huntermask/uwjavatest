@@ -39,12 +39,11 @@ public class TestPerson {
     p.setAge(20);
     p.setName("Fird Birfle");
     p.setSalary(195750.22);
-    
     assertEquals("[Person name:Fird Birfle age:20 salary:195750.22]", p.toString());
   }
   
   @Test
-  public void exercisePesonEquals() {
+  public void exercisePersonEquals() {
     Person p1 = new Person("Ted", 43, 250000);
     Person p2 = p1;
     assertEquals(p1, p2);
@@ -94,11 +93,13 @@ public class TestPerson {
     // ============ YOUR CHANGES BEGIN HERE
     // Call addPropertyChangeListener with a PropertyChangedListener
     // that has the following code in it:
-    /*
-    assertEquals("ssn", pce.getPropertyName());
-    assertEquals("", pce.getOldValue());
-    assertEquals("012-34-5678", pce.getNewValue());
-    */
+    ted.addPropertyChangeListener(new PropertyChangeListener() {
+      public void propertyChange(PropertyChangeEvent pce) {
+        assertEquals("ssn", pce.getPropertyName());
+        assertEquals("", pce.getOldValue());
+        assertEquals("012-34-5678", pce.getNewValue());
+      }
+    });
 
     // ============ YOUR CHANGES END HERE
     
